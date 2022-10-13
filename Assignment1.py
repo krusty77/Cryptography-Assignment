@@ -63,7 +63,34 @@ def get_factorization_number(p2):
 
 print("Answer of Question #3. You entered: " + p2_input + "\n")
 if (get_prime_optimized(p2)==False):
-   print("It is composite number, see the factorization numbers below: ")
+   print("It is composite number, see the factorization numbers below: \n")
    print(get_factorization_number(p2))
+   print("\n")
 else:
    print("It is not composite number " + "\n")
+
+# #
+print("Question 4")
+print("Implement Euclids algorithm and compute a) hcf(499017086208, 676126714752) b) hcf(5988737349, 578354589)")
+#################################################################################################################################################################################################
+p2_input = input("Enter a number to continue: ")
+n1 = 499017086208
+n2 = 676126714752
+n3 = 5988737349
+n4 = 578354589
+
+def get_hcf(n1, n2):
+    if (n1==0):
+        return n2
+    else:
+        return get_hcf(n2%n1,n1)
+
+print("The highest common factor of hcf(499017086208, 676126714752) is: \n")
+print(get_hcf(n1,n2))
+print("\nThe highest common factor of hcf(5988737349, 578354589) is: \n")
+print(get_hcf(n2,n4))
+
+# #
+print("Question 5")
+print("Explain how Euclids algorithm might help you to find multiplicative inverses and implement it. Solve for x the linear congruence 342952340x=1 mod4230493243")
+#################################################################################################################################################################################################
