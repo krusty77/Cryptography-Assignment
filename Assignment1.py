@@ -9,41 +9,53 @@ os.system('clear')
 print("Question 1")
 print("A number p is defined as prime if and only if it is divisible by itself (and 1). Implement a method from scratch that allows to test primality of a number using trial and error method.")
 #################################################################################################################################################################################################
-p_input = input("Enter a number: ")
-p = int(p_input)
-os.system('clear')
+flag = True
+p_input = ""
+p = 0
 
+##Function to get the prime number
 def get_prime(p):
     for i in range(2,p):
         if (p%i) == 0:
             return False
     return True
 
-print("Answer of Question #1. You entered: " + p_input + "\n")
-if (get_prime(p)==True):
-    print("It is a prime number" + "\n")
-else:
-    print("It is not a prime number " + "\n")
+##It will ask for a number until it is prime
+while (flag):
+    p_input = input("Enter a number: ")
+    p = int(p_input)
+    print("Answer of Question #1. You entered: " + p_input + "\n")
+    if (get_prime(p)==True):
+        print("It is a prime number" + "\n")
+        flag = False
+    else:
+        os.system('clear')
+        print("It is not a prime number \nYou will need to enter a Prime Number to Continue...")
+    
 
 # #
 print("Question 2")
 print("The technique that you used in the previous question is a bit slow if you consider a big enough number (e.g. 10-digits). Can you think of any other way to improve it? Implement the new one.")
+flag = True #Resetting the variables
+p_input = ""
+p = 0
 #################################################################################################################################################################################################
-p1_input = input("Enter a bigger prime number: ")
-p1 = int(p1_input)
-os.system('clear')
- 
-def get_prime_optimized(p1):
- for i in range(2,int(math.sqrt(p1))+1):
-   if (p1%i) == 0:
+def get_prime_optimized(p):
+ for i in range(2,int(math.sqrt(p))+1):
+   if (p%i) == 0:
      return False
  return True
 
-print("Answer of Question #2. You entered: " + p1_input + "\n") 
-if (get_prime_optimized(p1)==True):
-   print("It is a prime number " + "\n")
-else:
-   print("It is not a prime number " + "\n")
+while (flag):
+    p_input = input("Enter a bigger prime number: ")
+    p = int(p_input)
+    print("Answer of Question #2. You entered: " + p_input + "\n") 
+    if (get_prime_optimized(p)==True):
+        print("It is a big prime number " + "\n")
+        flag = False
+    else:
+        print("It is not a big prime number \nYou will need to enter a Prime Number to Continue...")
+        os.system('clear')
 # #
 
 # #
