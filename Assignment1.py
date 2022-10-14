@@ -55,9 +55,9 @@ p2 = int(p2_input)
 factorization_numbers = []
 os.system('clear')
 
-def get_factorization_number(p2):
-    for i in range(1,p2+1,1):
-        if (p2%i == 0):
+def get_factorization_number(factorization_of_composite):
+    for i in range(1,factorization_of_composite+1,1):
+        if (factorization_of_composite%i == 0):
             factorization_numbers.append(i)
     return factorization_numbers
 
@@ -74,6 +74,7 @@ print("Question 4")
 print("Implement Euclids algorithm and compute a) hcf(499017086208, 676126714752) b) hcf(5988737349, 578354589)")
 #################################################################################################################################################################################################
 p2_input = input("Enter a number to continue: ")
+os.system('clear')
 n1 = 499017086208
 n2 = 676126714752
 n3 = 5988737349
@@ -91,6 +92,19 @@ print("\nThe highest common factor of hcf(5988737349, 578354589) is: \n")
 print(get_hcf(n2,n4))
 
 # #
-print("Question 5")
+print("\nQuestion 5")
 print("Explain how Euclids algorithm might help you to find multiplicative inverses and implement it. Solve for x the linear congruence 342952340x=1 mod4230493243")
+print("\nExplanation: The Euclid Algorithm helps to find multiplicative inverse because for the formula A * A^-1 = 1 mod n, the number A and n must be coprimes\n In other words, if HCF(n1,n2) = 1 we can say they are coprimes and then it will have multiplicative inverse.")
+
+p3_input = input("Enter the first coprime number: ")
+os.system('clear')
+p4_input = input("Enter the second coprime number: ")
+os.system('clear')
+
+p3 = int(p3_input)
+p4 = int(p4_input)
+if(get_hcf(p3,p4)==1):
+    print("It has Multiplicative Inverses")
+else:
+    print("It does not have Multiplicative Inverses")
 #################################################################################################################################################################################################
