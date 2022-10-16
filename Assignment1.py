@@ -122,8 +122,6 @@ p4_input = input("Enter the second coprime number: ")
 os.system('clear')
 
 def get_linear_congruence(a,b,m):
-    a = a%m
-    b = b%m
     x = 0
     y = 0 ##it is not used, just need to capture the value of the function
 
@@ -132,12 +130,10 @@ def get_linear_congruence(a,b,m):
 
     ##initialize x0
     x0 = (x * (b // gcf)) % m
-    if(x0 <0):
-        x0+=m
-    result = 0
+    result = 0 ##variable to capture the result
     #get the result
     for i in range(gcf):
-        result = (x0 +i * (m // gcf)) % m
+        result = (x0 + i * (m // gcf)) % m ##used the Python floor division
     return result
 
 p3 = int(p3_input)
