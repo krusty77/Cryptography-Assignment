@@ -97,12 +97,12 @@ n4 = 578354589
 def get_Euclidean_Algorithm(n1, n2):
     if (n1==0):
         return n2,0,1
-    hcf,x1,y1 = get_Euclidean_Algorithm(n2%n1,n1)
+    gcf,x1,y1 = get_Euclidean_Algorithm(n2%n1,n1)
     #update the numbers
     x = y1 - (n2//n1) *x1
     y = x1
 
-    return hcf,x,y
+    return gcf,x,y
 
 print("Answer (a): The highest common factor of hcf(499017086208, 676126714752) is: \n")
 g,f,c = get_Euclidean_Algorithm(n1,n2)##Assign arbitrary three variables to split the results
@@ -129,11 +129,11 @@ def get_linear_congruence(a,b,m):
     gcf,x,y = get_Euclidean_Algorithm(a,m)
 
     ##initialize x0
-    x0 = (x * (b // gcf)) % m
+    x0 = (x * (b // gcf)) % m ##used the Python floor division
     result = 0 ##variable to capture the result
     #get the result
     for i in range(gcf):
-        result = (x0 + i * (m // gcf)) % m ##used the Python floor division
+        result = (x0 + i * (m // gcf)) % m 
     return result
 
 p3 = int(p3_input)
