@@ -94,16 +94,22 @@ n2 = 676126714752
 n3 = 5988737349
 n4 = 578354589
 
-def get_hcf(n1, n2):
+def get_Euclidean_Algorithm(n1, n2):
     if (n1==0):
-        return n2
-    else:
-        return get_hcf(n2%n1,n1)
+        return n2,0,1
+    hcf,x1,y1 = get_Euclidean_Algorithm(n2%n1,n1)
+    #update the numbers
+    x = y1 - (n2//n1) *x1
+    y = x1
 
-print("The highest common factor of hcf(499017086208, 676126714752) is: \n")
-print(get_hcf(n1,n2))
-print("\nThe highest common factor of hcf(5988737349, 578354589) is: \n")
-print(get_hcf(n2,n4))
+    return hcf,x,y
+
+print("Answer (a): The highest common factor of hcf(499017086208, 676126714752) is: \n")
+g,f,c = get_Euclidean_Algorithm(n1,n2)##Assign arbitrary three variables to split the results
+print(g)
+print("\nAnswer (b):The highest common factor of hcf(5988737349, 578354589) is: \n")
+g,f,c = get_Euclidean_Algorithm(n3,n4)##Assign arbitrary variables to split the results
+print(g)
 
 # #
 print("\nQuestion 5")
@@ -115,13 +121,32 @@ os.system('clear')
 p4_input = input("Enter the second coprime number: ")
 os.system('clear')
 
+def get_linear_congruence(a,b,m):
+    a = a%m
+    b = b%m
+    x = 0
+    y = 0 ##it is not used, just need to capture the value of the function
+
+    ##need to get the value of x and y
+    gcf,x,y = get_Euclidean_Algorithm(a,m)
+
+    ##initialize x0
+    x0 = (x * (b // gcf)) % m
+    if(x0 <0):
+        x0+=m
+    result = 0
+    #get the result
+    for i in range(gcf):
+        result = (x0 +i * (m // gcf)) % m
+    return result
+
 p3 = int(p3_input)
 p4 = int(p4_input)
-if(get_hcf(p3,p4)==1):
-    print("It has Multiplicative Inverses")
+if(get_Euclidean_Algorithm(p3,p4)==1):
+    print("The numbers entered: " + p3_input + " and " + p4_input + " have Multiplicative Inverses")
 else:
-    print("It does not have Multiplicative Inverses")
+    print("The numbers entered: " + p3_input + " and " + p4_input + " do not have Multiplicative Inverse")
 
-print("Test: ")
-print(get_hcf(342952340,4230493243))
+print("The answer for the x in the linear congruence 342952340x=1 mod4230493243 is the following: ")
+print(get_linear_congruence(342952340,1,4230493243))
 #################################################################################################################################################################################################
