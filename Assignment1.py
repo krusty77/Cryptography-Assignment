@@ -24,6 +24,7 @@ def get_prime(p):
 while (flag):
     p_input = input("Enter a number: ")
     p = int(p_input)
+    os.system('clear')
     print("Answer of Question #1. You entered: " + p_input + "\n")
     if (get_prime(p)==True):
         print("It is a prime number" + "\n")
@@ -49,6 +50,7 @@ def get_prime_optimized(p):
 while (flag):
     p_input = input("Enter a bigger prime number: ")
     p = int(p_input)
+    os.system('clear')
     print("Answer of Question #2. You entered: " + p_input + "\n") 
     if (get_prime_optimized(p)==True):
         print("It is a big prime number " + "\n")
@@ -119,4 +121,7 @@ if(get_hcf(p3,p4)==1):
     print("It has Multiplicative Inverses")
 else:
     print("It does not have Multiplicative Inverses")
+
+print("Test: ")
+print(get_hcf(342952340,4230493243))
 #################################################################################################################################################################################################
