@@ -79,6 +79,7 @@ print("Answer of Question #3. You entered: " + p2_input + "\n")
 if (get_prime_optimized(p2)==False):
    print("It is composite number, see the factorization numbers below: \n")
    print(get_factorization_number(p2))
+   factorization_numbers = []
    print("\n")
 else:
    print("It is not composite number " + "\n")
@@ -114,6 +115,7 @@ print(g)
 # #
 print("\nQuestion 5")
 print("Explain how Euclids algorithm might help you to find multiplicative inverses and implement it. Solve for x the linear congruence 342952340x=1 mod4230493243")
+#################################################################################################################################################################################################
 print("\nExplanation: The Euclid Algorithm helps to find multiplicative inverse because for the formula A * A^-1 = 1 mod n, the number A and n must be coprimes\n In other words, if HCF(n1,n2) = 1 we can say they are coprimes and then it will have multiplicative inverse.")
 
 p3_input = input("Enter the first coprime number: ")
@@ -138,11 +140,39 @@ def get_linear_congruence(a,b,m):
 
 p3 = int(p3_input)
 p4 = int(p4_input)
-if(get_Euclidean_Algorithm(p3,p4)==1):
+gcf,c,f = get_Euclidean_Algorithm(p3,p4)
+if(gcf==1):
     print("The numbers entered: " + p3_input + " and " + p4_input + " have Multiplicative Inverses")
 else:
     print("The numbers entered: " + p3_input + " and " + p4_input + " do not have Multiplicative Inverse")
 
 print("The answer for the x in the linear congruence 342952340x=1 mod4230493243 is the following: ")
 print(get_linear_congruence(342952340,1,4230493243))
+p2_input = input("Enter a number to continue: ")
+os.system('clear')
+
+
+# #
+print("Question 6")
+print("Write a program to convert an encrypted number c = m^e (mod n) into the original m = c^d (modn), where 0 < m < n is some integer. Pick any plaintext you would like to encrypt using the public key (937513, 638471) and then check the correctness of the algorithm.")
 #################################################################################################################################################################################################
+e = 937513
+n = 638471
+p = get_factorization_number(n)[1]
+q = get_factorization_number(n)[2]
+fn = (p-1)*(q-1)
+gcf,c,f = get_Euclidean_Algorithm(fn,e)
+d = get_linear_congruence(e,gcf,fn)
+
+number = 6
+
+def encryption(m):
+    return pow(m,e,n) ##Cipher = (Msg)^e mod N
+
+def decryption(c):
+    return pow(c,d,n) ##Msg = (Cipher)^d mod N
+
+print("Encryption: ")
+print(encryption(number))
+print("Decryption: ")
+print(decryption(encryption(number)))
