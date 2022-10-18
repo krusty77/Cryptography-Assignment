@@ -172,7 +172,7 @@ def decryption(c):
     return pow(c,d,n) ##Msg = (Cipher)^d mod N
 
 while (flag):
-    original_message = input("Enter a string to encrypt: ")##get the message from the user
+    original_message = input("Enter a string to encrypt no more than 2 characters: ")##get the message from the user
     message_converted_integer = int.from_bytes(original_message.encode('utf-8'), byteorder='big')##convert the plaintext to numbers
     if(message_converted_integer >= n or message_converted_integer <= 0): ##0 < m < n
         print("\nPlease enter a shorter string because the message must be in this range 0 < m < n...")
