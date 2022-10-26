@@ -163,7 +163,6 @@ q = get_factorization_number(n)[2]
 fn = (p-1)*(q-1)
 gcf,c,f = get_Euclidean_Algorithm(fn,e)
 d = get_linear_congruence(e,gcf,fn)
-flag = True
 
 def encryption(m):
     return pow(m,e,n) ##Cipher = (Msg)^e mod N
@@ -171,25 +170,28 @@ def encryption(m):
 def decryption(c):
     return pow(c,d,n) ##Msg = (Cipher)^d mod N
 
-while (flag):
-    original_message = input("Enter a string to encrypt no more than 2 characters: ")##get the message from the user
-    message_converted_integer = int.from_bytes(original_message.encode('utf-8'), byteorder='big')##convert the plaintext to numbers
-    if(message_converted_integer >= n or message_converted_integer <= 0): ##0 < m < n
-        print("\nPlease enter a shorter string because the message must be in this range 0 < m < n...")
-    else:
-        flag = False
+##Arrays for the cipher and decipher
+integer_arrays = [] ##characters converted to number
+integer_arrays_encrypted = [] ##characters converted to numbers and encrypted
+integer_arrays_unencrypted = [] ##encrypted characters converted to number
+final_message_unencrypted = [] ##after encryption this variable should be the same as the original message
 
-##Encrypt the message with the number generated
-print("\nMessage Encryption: ")
-print(encryption(message_converted_integer))
+original_message = input("Enter a message you want to encrypt: ")##get the message from the user
+to_array_original_message = [char for char in original_message] ##original message converted to an array of characters
 
-#Decrypt the message
-message_decrypted = decryption(encryption(message_converted_integer))
-##convert the number to plaintext again
-original_message_decrypted = int.to_bytes(message_decrypted, length=len(original_message), byteorder='big').decode('utf-8')
+##Encryption
+for i in range (0,len(to_array_original_message)):
+    integer_arrays.append(encryption(ord(to_array_original_message[i])))
 
-print("Message Decryption: ")
-print(message_decrypted)
+print("Full Message Encrypted: ")
+print(''.join(map(str, integer_arrays)))
 
-print("Original Message Converted: ")
-print(original_message_decrypted)
+##Decryption
+for i in range(0,len(integer_arrays)):
+    integer_arrays_unencrypted.append(decryption(integer_arrays[i]))
+##Message change to characters
+for i in range(0,len(integer_arrays_unencrypted)):
+    final_message_unencrypted.append(chr(integer_arrays_unencrypted[i]))
+##Message
+print("Your message derypted is: ")
+print("".join(final_message_unencrypted))
