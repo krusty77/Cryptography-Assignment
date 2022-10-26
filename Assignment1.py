@@ -172,7 +172,7 @@ def decryption(c):
 
 
 original_message = input("Enter a message you want to encrypt: ")##get the message from the user
-to_array_original_message = [char for char in original_message] ##converted to an array of character
+to_array_original_message = [char for char in original_message] ##original message converted to an array of characters
 message_converted_integer = int.from_bytes(original_message.encode('utf-8'), byteorder='big')##convert the plaintext to numbers
 
 

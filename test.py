@@ -66,7 +66,7 @@ print(to_array)
 print("raw")
 for i in range (0,len(to_array)):
     integer_arrays.append(encryption(ord(to_array[i])))
-    teste.append(int.from_bytes(to_array[i].encode('utf-8'), byteorder='big'))
+    teste.append(ord(to_array[i]))
 
 print(teste)
 
