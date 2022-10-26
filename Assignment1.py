@@ -193,5 +193,5 @@ for i in range(0,len(integer_arrays)):
 for i in range(0,len(integer_arrays_unencrypted)):
     final_message_unencrypted.append(chr(integer_arrays_unencrypted[i]))
 ##Message
-print("Your message derypted is: ")
+print("Your message decrypted is: ")
 print("".join(final_message_unencrypted))
