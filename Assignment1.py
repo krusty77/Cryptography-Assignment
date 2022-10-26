@@ -163,7 +163,6 @@ q = get_factorization_number(n)[2]
 fn = (p-1)*(q-1)
 gcf,c,f = get_Euclidean_Algorithm(fn,e)
 d = get_linear_congruence(e,gcf,fn)
-flag = True
 
 def encryption(m):
     return pow(m,e,n) ##Cipher = (Msg)^e mod N
@@ -171,13 +170,12 @@ def encryption(m):
 def decryption(c):
     return pow(c,d,n) ##Msg = (Cipher)^d mod N
 
-while (flag):
-    original_message = input("Enter a string to encrypt no more than 2 characters: ")##get the message from the user
-    message_converted_integer = int.from_bytes(original_message.encode('utf-8'), byteorder='big')##convert the plaintext to numbers
-    if(message_converted_integer >= n or message_converted_integer <= 0): ##0 < m < n
-        print("\nPlease enter a shorter string because the message must be in this range 0 < m < n...")
-    else:
-        flag = False
+
+original_message = input("Enter a message you want to encrypt: ")##get the message from the user
+to_array_original_message = [char for char in original_message] ##converted to an array of character
+message_converted_integer = int.from_bytes(original_message.encode('utf-8'), byteorder='big')##convert the plaintext to numbers
+
+
 
 ##Encrypt the message with the number generated
 print("\nMessage Encryption: ")
