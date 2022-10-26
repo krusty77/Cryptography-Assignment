@@ -170,24 +170,19 @@ def encryption(m):
 def decryption(c):
     return pow(c,d,n) ##Msg = (Cipher)^d mod N
 
+##Arrays for the cipher and decipher
+integer_arrays = [] ##characters converted to number
+integer_arrays_encrypted = [] ##characters converted to numbers and encrypted
+integer_arrays_unencrypted = [] ##encrypted characters converted to number
+teste = []
+test2 = [] ##after encryption this variable should be the same as the original message
 
 original_message = input("Enter a message you want to encrypt: ")##get the message from the user
 to_array_original_message = [char for char in original_message] ##original message converted to an array of characters
-message_converted_integer = int.from_bytes(original_message.encode('utf-8'), byteorder='big')##convert the plaintext to numbers
 
+##Encryption
+for i in range (0,len(to_array_original_message)):
+    integer_arrays.append(encryption(ord(to_array_original_message[i])))
 
-
-##Encrypt the message with the number generated
-print("\nMessage Encryption: ")
-print(encryption(message_converted_integer))
-
-#Decrypt the message
-message_decrypted = decryption(encryption(message_converted_integer))
-##convert the number to plaintext again
-original_message_decrypted = int.to_bytes(message_decrypted, length=len(original_message), byteorder='big').decode('utf-8')
-
-print("Message Decryption: ")
-print(message_decrypted)
-
-print("Original Message Converted: ")
-print(original_message_decrypted)
+print("Full Message Encrypted: ")
+print(''.join(map(str, integer_arrays)))

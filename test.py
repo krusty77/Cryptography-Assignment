@@ -82,12 +82,11 @@ print(integer_arrays_unencrypted)
 for i in range(0,len(integer_arrays_unencrypted)):
     test2.append(chr(integer_arrays_unencrypted[i]))
 
-
-
-
 print("Message Converted to String: ")
 print(test2)
 
+print("Full Message Encrypted: ")
+print(''.join(map(str, integer_arrays)))
+
 print("Your message was: ")
-final = "".join(test2)
-print(final)
+print("".join(test2))
