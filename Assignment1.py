@@ -174,8 +174,7 @@ def decryption(c):
 integer_arrays = [] ##characters converted to number
 integer_arrays_encrypted = [] ##characters converted to numbers and encrypted
 integer_arrays_unencrypted = [] ##encrypted characters converted to number
-teste = []
-test2 = [] ##after encryption this variable should be the same as the original message
+final_message_unencrypted = [] ##after encryption this variable should be the same as the original message
 
 original_message = input("Enter a message you want to encrypt: ")##get the message from the user
 to_array_original_message = [char for char in original_message] ##original message converted to an array of characters
@@ -186,3 +185,13 @@ for i in range (0,len(to_array_original_message)):
 
 print("Full Message Encrypted: ")
 print(''.join(map(str, integer_arrays)))
+
+##Decryption
+for i in range(0,len(integer_arrays)):
+    integer_arrays_unencrypted.append(decryption(integer_arrays[i]))
+##Message change to characters
+for i in range(0,len(integer_arrays_unencrypted)):
+    final_message_unencrypted.append(chr(integer_arrays_unencrypted[i]))
+##Message
+print("Your message derypted is: ")
+print("".join(final_message_unencrypted))
