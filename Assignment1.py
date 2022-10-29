@@ -156,8 +156,8 @@ os.system('clear')
 print("Question 6")
 print("Write a program to convert an encrypted number c = m^e (mod n) into the original m = c^d (modn), where 0 < m < n is some integer. Pick any plaintext you would like to encrypt using the public key (937513, 638471) and then check the correctness of the algorithm.")
 #################################################################################################################################################################################################
-e = 937513
-n = 638471
+n = 937513
+e = 638471
 p = get_factorization_number(n)[1]
 q = get_factorization_number(n)[2]
 fn = (p-1)*(q-1)
