@@ -1,5 +1,7 @@
 # Cryptography-Assignment
 
+This was a cryptography assignment for the course *BLOCK-524 Cryptographic Systems Security* from the University of Nicosia. I was enrolled in the Master of blockchain and digital currency.
+
 ## The RSA Algorithm
 
 The RSA algorithm belongs to the family of public key encryption algorithms and stands for Ron
